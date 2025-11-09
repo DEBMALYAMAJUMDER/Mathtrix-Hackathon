@@ -3,16 +3,23 @@ package org.mathtrix.hackathon.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import lombok.extern.slf4j.Slf4j;
+import org.mathtrix.hackathon.constant.APIConstant;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Slf4j
 public class ResponseUtil {
     private ResponseUtil() {
 
+    }
+
+    public static String getDateInString(LocalDateTime localDateTime) {
+        return localDateTime.format(DateTimeFormatter.ofPattern(APIConstant.YYYY_MM_DD));
     }
 
     public static String saveResponseToFile(String response, String fileName) {
@@ -31,6 +38,7 @@ public class ResponseUtil {
             try (FileWriter writer = new FileWriter(path.toFile())) {
                 writer.write(prettyJson);
             }
+            log.info("✅ Code review result saved (formatted) to file:" + path.toAbsolutePath());
             return "✅ Code review result saved (formatted) to file:" + path.toAbsolutePath();
         } catch (IOException e) {
             log.error("❌ Failed to save code review result to file", e);
