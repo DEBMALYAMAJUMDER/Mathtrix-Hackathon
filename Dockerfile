@@ -5,7 +5,8 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests -B
 
-FROM openjdk:17-slim
+# ---- Runtime image ----
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 # use a wildcard so we don't hardcode the built artifact version
 COPY --from=build /app/target/*-SNAPSHOT.jar ./app.jar
