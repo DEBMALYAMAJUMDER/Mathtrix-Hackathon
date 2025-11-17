@@ -17,6 +17,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -37,11 +38,22 @@ public class GreptileCodeReviewServiceImpl implements CodeReviewService {
         }
     }
 
-    /* For Testing Purpose*/
+    /* For Testing Purpose */
     @Override
     public String reviewSingleRepoWithPrompt(String prompt, String branch, String owner) {
         try {
             String body = MessageBodyUtil.getQueryMessageBody(prompt, branch, owner);
+            log.info("Request Body : [{}]", body);
+            return greptileClient.queryRepo(APIConstant.BEARER + greptileApiKey, body);
+        } catch (Exception e) {
+            throw new GreptileServerException(APIConstant.LOGGER_FORMATTED_EXCEPTION, e);
+        }
+    }
+
+    @Override
+    public String reviewRepositories(String prompt, List<String> repos, List<String> branches) {
+        try {
+            String body = MessageBodyUtil.getQueryMessageBody(prompt, repos, branches);
             log.info("Request Body : [{}]", body);
             return greptileClient.queryRepo(APIConstant.BEARER + greptileApiKey, body);
         } catch (Exception e) {

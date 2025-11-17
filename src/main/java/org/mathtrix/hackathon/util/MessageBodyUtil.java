@@ -7,11 +7,42 @@ import org.springframework.util.ObjectUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MessageBodyUtil {
     private MessageBodyUtil() {
 
     }
+
+    public static String getQueryMessageBody(String prompt,
+                                             List<String> repos,
+                                             List<String> branches) {
+
+        if (repos == null || branches == null || repos.size() != branches.size()) {
+            throw new IllegalArgumentException("Repos and branches must be non-null and of same size");
+        }
+
+        String repositoriesJson = IntStream.range(0, repos.size())
+                .mapToObj(i -> String.format("""
+                        {
+                          "remote": "github",
+                          "repository": "%s",
+                          "branch": "%s"
+                        }
+                        """, repos.get(i), branches.get(i)))
+                .collect(Collectors.joining(",\n"));
+
+        return String.format("""
+                {
+                  "repositories": [
+                    %s
+                  ],
+                  "query": "%s"
+                }
+                """, repositoriesJson, prompt);
+    }
+
 
     public static String getQueryMessageBody(String prompt, String branch, String owner) {
         var bodyJson = String.format("""

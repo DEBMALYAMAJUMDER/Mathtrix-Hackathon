@@ -13,4 +13,5 @@ public class APIConstant {
     public static final String BRANCH = "branch";
     public static final String OWNER = "owner";
     public static final String YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String MESSAGE = "message";
 }

@@ -44,8 +44,8 @@ public class CodeReviewController {
         var owner = MessageBodyUtil.getOwner(githubUrl);
         projectName = MessageBodyUtil.getProjectName(projectName);
         var response = codeReviewService.repoIndexing(branch, owner);
-        var saveResponse = ResponseUtil.saveResponseToFile(response, INDEX_REPO + projectName + "_" + branch + ".json");
-        return new ResponseEntity<>(saveResponse, HttpStatus.OK);
+        var indexResponse = ResponseUtil.getResponseMessage(response);
+        return new ResponseEntity<>(indexResponse, HttpStatus.OK);
     }
 
     @PostMapping(path = "/query/repository")
@@ -55,11 +55,11 @@ public class CodeReviewController {
         var queryEntity = repoQueryEntity.getRepoEntities();
         var query = repoQueryEntity.getQuery();
         var ownerRequestedMap = MessageBodyUtil.getOwnerAndBranch(queryEntity);
-        if (ownerRequestedMap.containsKey(APIConstant.BRANCH) && ownerRequestedMap.get(APIConstant.BRANCH).size() == 1) {
-            response = codeReviewService.reviewSingleRepoWithPrompt(query, ownerRequestedMap.get(APIConstant.BRANCH).get(0)
-                    , ownerRequestedMap.get(APIConstant.OWNER).get(0));
+        if (ownerRequestedMap.containsKey(APIConstant.BRANCH) && ownerRequestedMap.containsKey(APIConstant.OWNER)) {
+            response = codeReviewService.reviewRepositories(query, ownerRequestedMap.get(APIConstant.OWNER)
+                    , ownerRequestedMap.get(APIConstant.BRANCH));
         }
-        var saveResponse = ResponseUtil.saveResponseToFile(response, QUERY_REPO + ResponseUtil.getDateInString(LocalDateTime.now()) + ".json");
-        return new ResponseEntity<>(saveResponse, HttpStatus.OK);
+        var reviewResponse = ResponseUtil.getResponseMessage(response);
+        return new ResponseEntity<>(reviewResponse, HttpStatus.OK);
     }
 }
