@@ -21,7 +21,3 @@ Built with Spring Boot, Java
    $ java -jar target/*.jar  
 4. Example environment setup:  
    $ export GREPTILE_API_KEY=your_api_key
-
-## 5. License
-
-License: Not currently specified
