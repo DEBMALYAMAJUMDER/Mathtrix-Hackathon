@@ -21,3 +21,18 @@ Built with Spring Boot, Java
    $ java -jar target/*.jar  
 4. Example environment setup:  
    $ export GREPTILE_API_KEY=your_api_key
+
+## 4. Project Architecture
+1. The seven-layer architectural model and how components are organized
+2. Component interaction patterns and data flow between layers
+3. Integration architecture with external services (Greptile API, GitHub)
+4. Validation architecture and defensive programming strategies
+5. Key design patterns employed throughout the codebase
+
+Layered Architecture
+The application follows a seven-layer architecture that enforces strict separation of concerns. Each layer has a specific responsibility and communicates only with adjacent layers.
+
+Diagram:
+<img width="1185" height="453" alt="image" src="https://github.com/user-attachments/assets/5bfebfbb-abc5-4271-a690-d42041888379" />
+
+
