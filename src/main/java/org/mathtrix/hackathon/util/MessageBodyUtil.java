@@ -18,7 +18,7 @@ public class MessageBodyUtil {
     public static String getQueryMessageBody(String prompt,
                                              List<String> repos,
                                              List<String> branches) {
-
+        prompt = prompt + APIConstant.ENDING_PROMPT;
         if (repos == null || branches == null || repos.size() != branches.size()) {
             throw new IllegalArgumentException("Repos and branches must be non-null and of same size");
         }
