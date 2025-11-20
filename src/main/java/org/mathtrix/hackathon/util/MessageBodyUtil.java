@@ -4,6 +4,7 @@ import org.mathtrix.hackathon.constant.APIConstant;
 import org.mathtrix.hackathon.entity.RepoIndexEntity;
 import org.springframework.util.ObjectUtils;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,10 +19,10 @@ public class MessageBodyUtil {
     public static String getQueryMessageBody(String prompt,
                                              List<String> repos,
                                              List<String> branches) {
-        prompt = prompt + APIConstant.ENDING_PROMPT;
         if (repos == null || branches == null || repos.size() != branches.size()) {
             throw new IllegalArgumentException("Repos and branches must be non-null and of same size");
         }
+        prompt = prompt + String.format(APIConstant.ENDING_PROMPT, repos.size()) ;
 
         String repositoriesJson = IntStream.range(0, repos.size())
                 .mapToObj(i -> String.format("""
