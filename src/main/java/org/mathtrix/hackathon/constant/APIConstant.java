@@ -14,5 +14,5 @@ public class APIConstant {
     public static final String OWNER = "owner";
     public static final String YYYY_MM_DD = "yyyy-MM-dd";
     public static final String MESSAGE = "message";
-    public static final String ENDING_PROMPT = " and find the most impacted repository among the %s repositories";
+    public static final String ENDING_PROMPT = " and find the most impacted repository among the %s repositories.";
 }
