@@ -1,4 +1,4 @@
-## 1. Project Overview
+## 1. Overview
 
 Created this repository to provide a backend service for automated code review and repository indexing using Greptile APIs. The application exposes endpoints to index GitHub repositories and process code review queries, returning concise review messages. Perfect for developers and teams who need to automate code review workflows and manage repository indexing efficiently.
 
@@ -22,7 +22,7 @@ Built with Spring Boot, Java
 4. Example environment setup:  
    $ export GREPTILE_API_KEY=your_api_key
 
-## 4. Project Architecture
+## 4. Architecture
 1. The seven-layer architectural model and how components are organized
 2. Component interaction patterns and data flow between layers
 3. Integration architecture with external services (Greptile API, GitHub)
@@ -35,7 +35,19 @@ The application follows a seven-layer architecture that enforces strict separati
 Diagram:
 <img width="1185" height="453" alt="image" src="https://github.com/user-attachments/assets/5bfebfbb-abc5-4271-a690-d42041888379" />
 
-## 5. Impact Analysis Test Deliverables
+## How to Test
+UI test link: https://hackathon-ui-zroh.onrender.com/query
+
+Test Repos to Analyze: 
+https://github.com/DEBMALYAMAJUMDER/go-dummy-hackathon (master)
+https://github.com/DEBMALYAMAJUMDER/balance-inquiry-hackathon (main)
+https://github.com/DEBMALYAMAJUMDER/payment-initiator-hackathon (master)
+
+Scan & Index GitHub Repository: Indexing each repository for faster querying
+
+Run Query Against Repositories: Adding individual repositories to be scanned and adding query for proposed changes. 
+
+## 5. Execution Details
 
 ## Change Query: change debitAccount to accNo and set static value CREATE to earmarkType
 
