@@ -51,6 +51,17 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+<!--        JUNIT-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!--        aop-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

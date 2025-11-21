@@ -3,7 +3,7 @@ WORKDIR /app
 # copy pom first for dependency caching
 COPY pom.xml .
 COPY src ./src
-RUN mvn clean package -DskipTests -B
+RUN mvn clean package
 
 # ---- Runtime image ----
 FROM eclipse-temurin:17-jre
