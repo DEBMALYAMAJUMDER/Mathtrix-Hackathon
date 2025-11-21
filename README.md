@@ -41,8 +41,6 @@ Diagram:
 
 Based on my analysis of all three repositories, here's the impact assessment of the proposed changes:
 
-## Impact Analysis: Changing debitAccount to accNo and Setting earmarkType to Static Value "CREATE"
-
 ### *Most Impacted Repository: debmalyamajumder/go-dummy-hackathon* 
 
 This is the most impacted repository for the following reasons:
