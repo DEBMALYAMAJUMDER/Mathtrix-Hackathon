@@ -39,9 +39,9 @@ Diagram:
 UI test link: https://hackathon-ui-zroh.onrender.com/query
 
 Test Repos to Analyze: 
-https://github.com/DEBMALYAMAJUMDER/go-dummy-hackathon (master)
-https://github.com/DEBMALYAMAJUMDER/balance-inquiry-hackathon (main)
-https://github.com/DEBMALYAMAJUMDER/payment-initiator-hackathon (master)
+https://github.com/DEBMALYAMAJUMDER/payment-initiator-hackathon (master)(JAVA) : Payment is received at his layer for earmarking.
+https://github.com/DEBMALYAMAJUMDER/balance-inquiry-hackathon (master)(PYTHON) : Request is received from the payment initiator, performs balance check.
+https://github.com/DEBMALYAMAJUMDER/go-dummy-hackathon (master)(GOLANG) : Request is received to book the earmark and response sent back to Balance-Inquiry service
 
 Scan & Index GitHub Repository: Indexing each repository for faster querying
 
